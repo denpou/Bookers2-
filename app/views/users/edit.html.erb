@@ -1,0 +1,34 @@
+
+  <p id="notice"></p>
+  <div class='container'>
+    <div class='row'>
+      <div class="userpath">
+        <h2>User info</h2>
+        <% if @user.errors.any? %>
+          <%= @user.errors.count %>errors prohibited this obj from being saved:
+          <% @user.errors.full_messages.each do |message| %>
+            <%= message %>
+          <% end %>
+        <% end %>
+        <%= form_with model:@user, local:true do |f| %>
+        <div class="form-group">
+          <li>
+            <%= f.label :name,'Name', class: "inputName" %>
+           <P><%= f.text_field :name, autofocus: true, id:"inputName" %></P>
+          </li>
+          <li>
+            <%= f.label :profile_image,'Image' %>
+            <P><%= f.attachment_field :profile_image %></P>
+          </li>
+          <li>
+            <%= f.label :introduction,'Introduction', class: "inputIintroduction" %>
+            <P><%= f.text_field :introduction, autofocus: true, id:"inputIintroduction" %></P>
+          </li>
+          <li>
+            <%= f.submit "Update User",class: "btn btn-secondary" %>
+          </li>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
